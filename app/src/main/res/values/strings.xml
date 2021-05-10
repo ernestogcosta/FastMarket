@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Fast Market</string>
+    <string name="login_button">LOGIN</string>
+    <string name="signup_button">CADASTRAR</string>
+    <string name="login_to_forgot_password">Esqueci minha senha</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Senha</string>
+
+    <!-- Sign Up -->
+    <string name="email_confirmar_hint">Confirmar email</string>
+    <string name="password_confirmar_hint">Confirmar senha</string>
+    <string name="back_button">Voltar</string>
+
+    <!-- Forgot -->
+    <string name="forgot_text">Por favor, digite seu email no campo abaixo e então pressione o botão enviar. Um email será enviado para a redefinição de sua senha.</string>
+    <string name="reset_password_email_sent">Email enviado com sucesso!</string>
+    <string name="forgot_send_button">ENVIAR</string>
+
 </resources>
