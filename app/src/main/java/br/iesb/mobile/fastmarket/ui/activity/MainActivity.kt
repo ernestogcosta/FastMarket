@@ -1,7 +1,8 @@
-package br.iesb.mobile.fastmarket
+package br.iesb.mobile.fastmarket.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.iesb.mobile.fastmarket.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
