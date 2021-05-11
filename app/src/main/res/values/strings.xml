@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Fast Market</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="onboardingBtn">Vamos lá!</string>
+    <string name="onboardingScene1">Seja bem-vindo ao Fast Market!</string>
+    <string name="onboardingScene2">Veja mercados próximos e monte suas listas de forma prática</string>
+    <string name="onboardingScene3">Prepare uma rota muito mais rápida!</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

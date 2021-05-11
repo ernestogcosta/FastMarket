@@ -11,6 +11,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        onboard = OnboardingFragment()
+        setFragment(onboard)
+    }
+
+    private fun setFragment(fragment: Fragment){
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_fragments, fragment)
+        fragmentTransaction.commit()
     }
     /*
     private fun setFragment(fragment: Fragment){
