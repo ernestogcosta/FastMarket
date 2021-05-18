@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import br.iesb.mobile.fastmarket.R
 import br.iesb.mobile.fastmarket.databinding.LayoutonboardingBinding
 import br.iesb.mobile.fastmarket.ui.adapter.OnboardingAdapter
 import br.iesb.mobile.fastmarket.ui.fragment.onboarding.OnboardingPage1
@@ -37,5 +39,9 @@ class OnboardingFragment : Fragment() {
     @SuppressWarnings
     fun start(v: View) {
 
+    }
+
+    fun irOnboardingLogin(v: View){
+        findNavController().navigate(R.id.acOnboardingToLogin)
     }
 }

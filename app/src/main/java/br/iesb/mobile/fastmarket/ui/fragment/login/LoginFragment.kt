@@ -36,10 +36,10 @@ class LoginFragment : Fragment() {
     fun fazerLogin(v: View){
         auth.signInWithEmailAndPassword(binding.etEmailLogin.text.toString(), binding.etPasswordLogin.text.toString()).addOnCompleteListener{
             if(it.isSuccessful){
-                Toast.makeText(context, "foi", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Cadastro Realizado com sucesso", Toast.LENGTH_LONG).show()
                 findNavController().navigate(R.id.acLoginToMainActivity)
             }else{
-                Toast.makeText(context, binding.etPasswordLogin.text.toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Email ou senha incorretos.", Toast.LENGTH_LONG).show()
             }
         }
 
