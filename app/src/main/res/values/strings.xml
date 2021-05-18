@@ -10,10 +10,13 @@
     <string name="email_confirmar_hint">Confirmar email</string>
     <string name="password_confirmar_hint">Confirmar senha</string>
     <string name="back_button">Voltar</string>
+    <string name="toast_cadastro_realizado">Cadastro realizado com sucesso!</string>
 
     <!-- Forgot -->
     <string name="forgot_text">Por favor, digite seu email no campo abaixo e então pressione o botão enviar. Um email será enviado para a redefinição de sua senha.</string>
     <string name="reset_password_email_sent">Email enviado com sucesso!</string>
     <string name="forgot_send_button">ENVIAR</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

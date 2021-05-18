@@ -6,14 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.LoginActivity">
 
-    <fragment
-        android:id="@+id/frame_fragments"
-        android:name="br.iesb.mobile.fastmarket.ui.fragment.login.LoginFragment"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/loginNavigationFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_login"/>
+        app:navGraph="@navigation/my_nav" />
 </androidx.constraintlayout.widget.ConstraintLayout>
