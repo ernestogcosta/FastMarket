@@ -1,6 +1,7 @@
 package br.iesb.mobile.fastmarket.ui.fragment.login
 
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,16 +34,14 @@ class LoginFragment : Fragment() {
     }
 
     fun fazerLogin(v: View){
-//        auth.signInWithEmailAndPassword(binding.etEmailLogin.text.toString(), binding.etPasswordLogin.text.toString()).addOnCompleteListener{
-//            if(it.isSuccessful){
-//                Toast.makeText(context, "foi", Toast.LENGTH_LONG).show()
-//                findNavController().navigate(R.id.acLoginToMainActivity)
-//            }else{
-//                Toast.makeText(context, binding.etPasswordLogin.text.toString(), Toast.LENGTH_LONG).show()
-//            }
-//        }
-
-        findNavController().navigate(R.id.acLoginToMainActivity)
+        auth.signInWithEmailAndPassword(binding.etEmailLogin.text.toString(), binding.etPasswordLogin.text.toString()).addOnCompleteListener{
+            if(it.isSuccessful){
+                Toast.makeText(context, "foi", Toast.LENGTH_LONG).show()
+                findNavController().navigate(R.id.acLoginToMainActivity)
+            }else{
+                Toast.makeText(context, binding.etPasswordLogin.text.toString(), Toast.LENGTH_LONG).show()
+            }
+        }
 
     }
 

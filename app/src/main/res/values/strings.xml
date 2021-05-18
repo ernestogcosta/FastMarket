@@ -6,6 +6,10 @@
     <string name="email_hint">Email</string>
     <string name="password_hint">Senha</string>
 
+    <!-- Login -->
+    <string name="login_email_ausente">Por favor, digite o seu email.</string>
+    <string name="login_password_ausente">Por favor, digite a sua senha.</string>
+
     <!-- Sign Up -->
     <string name="email_confirmar_hint">Confirmar email</string>
     <string name="password_confirmar_hint">Confirmar senha</string>
