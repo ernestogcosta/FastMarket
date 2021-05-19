@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+//import androidx.navigation.fragment.findNavController
 import br.iesb.mobile.fastmarket.R
 import br.iesb.mobile.fastmarket.databinding.LayoutonboardingBinding
 import br.iesb.mobile.fastmarket.ui.adapter.OnboardingAdapter
@@ -33,7 +33,7 @@ class OnboardingFragment : Fragment() {
             requireActivity().supportFragmentManager,
             lifecycle
         )
-
+        binding.wormDotsIndicator.setViewPager2(binding.viewpageOnboarding)
         return binding.root
     }
     @SuppressWarnings
