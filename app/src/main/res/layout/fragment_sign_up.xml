@@ -34,7 +34,7 @@
             android:onClick="@{fragment::fazerCadastroELogar}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
+            app:layout_constraintTop_toBottomOf="@+id/etConfirmarPassword" />
 
         <Button
             android:id="@+id/btBackSignUp"
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/dark_red"
-            android:text="@string/back_button"
+            android:text="@string/signup_back_button"
             android:onClick="@{() -> fragment.activity.onBackPressed()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:ems="10"
-            android:hint="@string/email_confirmar_hint"
+            android:hint="@string/signup_email_confirmar_hint"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +93,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/etPassword"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -105,16 +105,16 @@
             app:layout_constraintTop_toBottomOf="@+id/etConfirmarEmailSignUp" />
 
         <EditText
-            android:id="@+id/editTextTextPassword2"
+            android:id="@+id/etConfirmarPassword"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:ems="10"
-            android:hint="@string/password_confirmar_hint"
+            android:hint="@string/signup_password_confirmar_hint"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

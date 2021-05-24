@@ -17,7 +17,6 @@ class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     val auth = FirebaseAuth.getInstance()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,15 +33,20 @@ class LoginFragment : Fragment() {
     }
 
     fun fazerLogin(v: View){
-        auth.signInWithEmailAndPassword(binding.etEmailLogin.text.toString(), binding.etPasswordLogin.text.toString()).addOnCompleteListener{
-            if(it.isSuccessful){
-                Toast.makeText(context, "Cadastro Realizado com sucesso", Toast.LENGTH_LONG).show()
-                findNavController().navigate(R.id.acLoginToMainActivity)
-            }else{
-                Toast.makeText(context, "Email ou senha incorretos.", Toast.LENGTH_LONG).show()
+        if(binding.etEmailLogin.text.toString().isEmpty()){
+            Toast.makeText(context, getString(R.string.login_email_ausente), Toast.LENGTH_LONG).show()
+        }else if(binding.etPasswordLogin.text.toString().isEmpty()){
+            Toast.makeText(context, getString(R.string.login_password_ausente), Toast.LENGTH_LONG).show()
+        }else{
+            auth.signInWithEmailAndPassword(binding.etEmailLogin.text.toString(), binding.etPasswordLogin.text.toString()).addOnCompleteListener{
+                if(it.isSuccessful){
+                    Toast.makeText(context, getString(R.string.login_success), Toast.LENGTH_LONG).show()
+                    findNavController().navigate(R.id.acLoginToMainActivity)
+                }else{
+                    Toast.makeText(context, getString(R.string.login_email_senha_errado), Toast.LENGTH_LONG).show()
+                }
             }
         }
-
     }
 
     fun irForgot(v: View){
