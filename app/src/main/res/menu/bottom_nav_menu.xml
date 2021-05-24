@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/menu_home"
+        android:title="Home"
+        android:icon="@drawable/ic_baseline_home_24"
+        app:showAsAction="always"/>
+    <item android:id="@+id/menu_listas"
+        android:title="Lists"
+        android:icon="@drawable/ic_baseline_format_list_numbered_24"
+        app:showAsAction="always"/>
+    <item android:id="@+id/menu_locations"
+        android:title="Locations"
+        android:icon="@drawable/ic_baseline_map_24"
+        app:showAsAction="always"/>
+    <item android:id="@+id/menu_chatbot"
+        android:title="Chat"
+        android:icon="@drawable/ic_baseline_chat_24"
+        app:showAsAction="always"/>
+    <item android:id="@+id/menu_logout"
+        android:title="Logout"
+        android:icon="@drawable/ic_baseline_power_settings_new_24"
+        app:showAsAction="always"/>
+
+</menu>
