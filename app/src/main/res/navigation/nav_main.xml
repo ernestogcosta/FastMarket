@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="br.iesb.mobile.fastmarket.ui.fragment.main.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/nvHomeNewList"
+            app:destination="@id/newListFragment" />
+        <action
+            android:id="@+id/nvHomeLists"
+            app:destination="@id/listsFragment" />
+        <action
+            android:id="@+id/nvHomeProfile"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/nvHomeMarket"
+            app:destination="@id/marketFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newListFragment"
+        android:name="br.iesb.mobile.fastmarket.ui.fragment.main.NewListFragment"
+        android:label="NewListFragment" />
+    <fragment
+        android:id="@+id/listsFragment"
+        android:name="br.iesb.mobile.fastmarket.ui.fragment.main.ListsFragment"
+        android:label="ListsFragment" />
+    <fragment
+        android:id="@+id/marketFragment"
+        android:name="br.iesb.mobile.fastmarket.ui.fragment.main.MarketFragment"
+        android:label="MarketFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="br.iesb.mobile.fastmarket.ui.fragment.main.ProfileFragment"
+        android:label="ProfileFragment" />
+</navigation>

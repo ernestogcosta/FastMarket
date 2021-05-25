@@ -34,4 +34,10 @@
     <string name="forgot_send_button">ENVIAR</string>
     <string name="forgot_email_missing">Por favor, digite o seu email.</string>
     <string name="forgot_erro">Email não cadastrado.</string>
+
+    <!-- Main -->
+    <string name="main_nova_lista">Nova Lista de Compras</string>
+    <string name="main_listas">Listas</string>
+    <string name="main_mercados">Mercaods</string>
+    <string name="main_preco">Coming soon...</string>
 </resources>
