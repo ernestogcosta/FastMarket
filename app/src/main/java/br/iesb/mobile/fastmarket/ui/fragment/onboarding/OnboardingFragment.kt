@@ -33,7 +33,7 @@ class OnboardingFragment : Fragment() {
             requireActivity().supportFragmentManager,
             lifecycle
         )
-
+        binding.wormDotsIndicator.setViewPager2(binding.viewpageOnboarding)
         return binding.root
     }
     @SuppressWarnings
