@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/menu_home"
+    <item android:id="@+id/homeFragment"
         android:title="Home"
         android:icon="@drawable/ic_baseline_home_24"
         app:showAsAction="always"/>
-    <item android:id="@+id/menu_listas"
+    <item android:id="@+id/listsFragment"
         android:title="Lists"
         android:icon="@drawable/ic_baseline_format_list_numbered_24"
         app:showAsAction="always"/>
-    <item android:id="@+id/menu_locations"
-        android:title="Locations"
+    <item android:id="@+id/marketFragment"
+        android:title="Mercados"
         android:icon="@drawable/ic_baseline_map_24"
         app:showAsAction="always"/>
-    <item android:id="@+id/menu_chatbot"
-        android:title="Chat"
+    <item android:id="@+id/profileFragment"
+        android:title="Profile"
         android:icon="@drawable/ic_baseline_chat_24"
         app:showAsAction="always"/>
-    <item android:id="@+id/menu_logout"
-        android:title="Logout"
+    <item android:id="@+id/newListFragment"
+        android:title="New List"
         android:icon="@drawable/ic_baseline_power_settings_new_24"
         app:showAsAction="always"/>
 
