@@ -16,15 +16,28 @@
     <!-- Login -->
     <string name="login_email_ausente">Por favor, digite o seu email.</string>
     <string name="login_password_ausente">Por favor, digite a sua senha.</string>
+    <string name="login_success">Login realizado com sucesso.</string>
+    <string name="login_email_senha_errado">Email ou senha incorretos.</string>
 
     <!-- Sign Up -->
-    <string name="email_confirmar_hint">Confirmar email</string>
-    <string name="password_confirmar_hint">Confirmar senha</string>
-    <string name="back_button">Voltar</string>
-    <string name="toast_cadastro_realizado">Cadastro realizado com sucesso!</string>
+    <string name="signup_email_confirmar_hint">Confirmar email</string>
+    <string name="signup_password_confirmar_hint">Confirmar senha</string>
+    <string name="signup_back_button">Voltar</string>
+    <string name="signup_cadastro_realizado">Cadastro realizado com sucesso!</string>
+    <string name="signup_et_ausente">Por favor, preencha todos os campos.</string>
+    <string name="signup_emails_diferentes">Emails diferentes.</string>
+    <string name="signup_passwords_diferentes">Senhas diferentes.</string>
 
     <!-- Forgot -->
     <string name="forgot_text">Por favor, digite seu email no campo abaixo e então pressione o botão enviar. Um email será enviado para a redefinição de sua senha.</string>
     <string name="reset_password_email_sent">Email enviado com sucesso!</string>
     <string name="forgot_send_button">ENVIAR</string>
+    <string name="forgot_email_missing">Por favor, digite o seu email.</string>
+    <string name="forgot_erro">Email não cadastrado.</string>
+
+    <!-- Main -->
+    <string name="main_nova_lista">Nova Lista de Compras</string>
+    <string name="main_listas">Listas</string>
+    <string name="main_mercados">Mercaods</string>
+    <string name="main_preco">Coming soon...</string>
 </resources>
