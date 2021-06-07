@@ -7,9 +7,6 @@ O intuito deste projeto é a criação de um aplicativo para listas de compras e
 ### Alunos:
 Ernesto, Adolfo, André e Jéssica
 
-## Link para primeira versão das telas no Figma:
-https://www.figma.com/file/bJWFi5xvVH33vjRCp8D24e/Untitled?node-id=0%3A1
 
-
-## Versão antiga do repositório antes de recomeçar o projeto do zero:
-https://github.com/ernestogcosta/app-projeto-integrador-2
+## Link para o repositório do servidor usado na comunicação com o DialogFlow:
+https://github.com/Henrix-Andre/FastMarket-Server
