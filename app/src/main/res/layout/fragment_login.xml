@@ -26,24 +26,26 @@
 
         <Button
             android:id="@+id/btLogin"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.PrimaryButton"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/dark_red"
-            android:text="@string/login_button"
             android:onClick="@{fragment::fazerLogin}"
+            android:text="@string/login_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_password_login" />
 
         <Button
             android:id="@+id/btSignUp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.PrimaryButton"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/dark_red"
-            android:text="@string/signup_button"
             android:onClick="@{fragment::irSignUp}"
+            android:text="@string/signup_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btLogin" />

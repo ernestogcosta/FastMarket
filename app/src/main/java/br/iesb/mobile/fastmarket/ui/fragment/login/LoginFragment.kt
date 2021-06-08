@@ -28,6 +28,19 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        checkUser()
+    }
+
+    private fun checkUser() {
+        val firebaseUser = auth.currentUser
+        if(firebaseUser != null){
+            findNavController().navigate(R.id.acLoginToMainActivity)
+        }
+    }
+
     fun irSignUp(v: View){
         findNavController().navigate(R.id.acLoginToSignUp)
     }

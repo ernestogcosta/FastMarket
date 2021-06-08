@@ -40,4 +40,10 @@
     <string name="main_listas">Listas</string>
     <string name="main_mercados">Mercaods</string>
     <string name="main_preco">Coming soon...</string>
+
+    <!-- New List -->
+    <string name="newlist_bt_add">Adicionar Produto</string>
+    <string name="newlist_product_search">Nome do produto</string>
+    <string name="newlist_product_no_name">Por favor, digite o produto.</string>
+    <string name="newlist_salvar_lista">Salvar Lista</string>
 </resources>

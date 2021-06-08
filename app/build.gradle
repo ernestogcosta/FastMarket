@@ -66,4 +66,8 @@ dependencies {
 
     /** ViewPager Dots Indicator */
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
+
+    /** RecyclerView*/
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation'androidx.recyclerview:recyclerview:1.0.0'
 }
