@@ -36,9 +36,9 @@
     <string name="forgot_erro">Email não cadastrado.</string>
 
     <!-- Main -->
-    <string name="main_nova_lista">Nova Lista de Compras</string>
+    <string name="main_nova_lista">Nova Lista</string>
     <string name="main_listas">Listas</string>
-    <string name="main_mercados">Mercaods</string>
+    <string name="main_iniciar_compras">Ir às compras!</string>
     <string name="main_preco">Coming soon...</string>
 
     <!-- New List -->
@@ -46,4 +46,9 @@
     <string name="newlist_product_search">Nome do produto</string>
     <string name="newlist_product_no_name">Por favor, digite o produto.</string>
     <string name="newlist_salvar_lista">Salvar Lista</string>
+    <string name="newlist_saved">Lista criada com sucesso!</string>
+
+    <!-- List -->
+    <string name="list_bt_ir_mercado">Ir para as compras!</string>
+    <string name="list_start_new_list">Criar outra lista!</string>
 </resources>

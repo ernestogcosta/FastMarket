@@ -12,6 +12,7 @@ import br.iesb.mobile.fastmarket.ui.adapter.OnboardingAdapter
 import br.iesb.mobile.fastmarket.ui.fragment.onboarding.OnboardingPage1
 import br.iesb.mobile.fastmarket.ui.fragment.onboarding.OnboardingPage2
 import br.iesb.mobile.fastmarket.ui.fragment.onboarding.OnboardingFragmentPage3
+import com.google.firebase.auth.FirebaseAuth
 
 class OnboardingFragment : Fragment() {
     private lateinit var binding: LayoutonboardingBinding
@@ -36,6 +37,19 @@ class OnboardingFragment : Fragment() {
         binding.wormDotsIndicator.setViewPager2(binding.viewpageOnboarding)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        checkUser()
+    }
+
+    private fun checkUser() {
+        val firebaseUser = FirebaseAuth.getInstance().currentUser
+        if(firebaseUser != null){
+            findNavController().navigate(R.id.acOnboardingToMainActivity)
+        }
+    }
+
     @SuppressWarnings
     fun start(v: View) {
 

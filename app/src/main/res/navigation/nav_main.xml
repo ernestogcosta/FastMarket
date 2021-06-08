@@ -24,11 +24,22 @@
     <fragment
         android:id="@+id/newListFragment"
         android:name="br.iesb.mobile.fastmarket.ui.fragment.main.NewListFragment"
-        android:label="NewListFragment" />
+        android:label="NewListFragment" >
+        <action
+            android:id="@+id/acNewListToList"
+            app:destination="@id/listsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/listsFragment"
         android:name="br.iesb.mobile.fastmarket.ui.fragment.main.ListsFragment"
-        android:label="ListsFragment" />
+        android:label="ListsFragment" >
+        <action
+            android:id="@+id/acListToNewList"
+            app:destination="@id/newListFragment" />
+        <action
+            android:id="@+id/acListToMarket"
+            app:destination="@id/marketFragment" />
+    </fragment>
     <fragment
         android:id="@+id/marketFragment"
         android:name="br.iesb.mobile.fastmarket.ui.fragment.main.MarketFragment"

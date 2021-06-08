@@ -7,12 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import br.iesb.mobile.fastmarket.R
 import br.iesb.mobile.fastmarket.databinding.FragmentNewListBinding
+import br.iesb.mobile.fastmarket.repository.Product
+import br.iesb.mobile.fastmarket.repository.ProductDao
+import br.iesb.mobile.fastmarket.repository.ProductDatabase
 import br.iesb.mobile.fastmarket.ui.adapter.RecyclerAdapter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class NewListFragment : Fragment() {
 
@@ -20,6 +29,9 @@ class NewListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var recyclerAdapter: RecyclerAdapter
+
+    private lateinit var database: ProductDatabase
+    private lateinit var dao: ProductDao
 
     private var productList = mutableListOf<String>()
 
@@ -36,6 +48,13 @@ class NewListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        database = Room.databaseBuilder(
+            requireActivity().applicationContext,
+            ProductDatabase::class.java, "arquivo-de-produtos"
+        ).build()
+        dao = database.getProductDao()
+
         binding.rvList.apply{
             binding.rvList.layoutManager = LinearLayoutManager(activity?.applicationContext)
             recyclerView = requireView().findViewById(R.id.rvList)
@@ -56,12 +75,25 @@ class NewListFragment : Fragment() {
             productList.add(index, binding.etCharacter.text.toString())
 
             recyclerAdapter.notifyItemInserted(index)
-            binding.etCharacter.text.clear()
+            binding.etCharacter.setText("")
         }
     }
 
-    fun saveNewList(v: View){
-        Toast.makeText(view?.context, "Salvando no banco", Toast.LENGTH_LONG).show()
+//    fun saveNewList(v: View){
+//        Toast.makeText(view?.context, "Salvando no banco", Toast.LENGTH_LONG).show()
+//    }
+
+    fun saveNewList(v: View) {
+        GlobalScope.launch {
+            for(product in productList){
+               val p = Product(name = product)
+               dao.insertProduct(p)
+            }
+            withContext(Dispatchers.Main) {
+                Toast.makeText(view?.context, getString(R.string.newlist_saved), Toast.LENGTH_LONG).show()
+                findNavController().navigate(R.id.acNewListToList)
+            }
+        }
     }
 
     private var simpleCallback = object: ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT){
