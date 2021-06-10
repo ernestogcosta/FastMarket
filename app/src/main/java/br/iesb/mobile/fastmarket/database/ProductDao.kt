@@ -1,4 +1,4 @@
-package br.iesb.mobile.fastmarket.repository
+package br.iesb.mobile.fastmarket.database
 
 import androidx.room.*
 

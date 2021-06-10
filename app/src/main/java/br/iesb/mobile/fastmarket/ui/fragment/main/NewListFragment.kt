@@ -1,6 +1,5 @@
 package br.iesb.mobile.fastmarket.ui.fragment.main
 
-import android.media.MediaRouter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import br.iesb.mobile.fastmarket.R
 import br.iesb.mobile.fastmarket.databinding.FragmentNewListBinding
-import br.iesb.mobile.fastmarket.repository.Product
-import br.iesb.mobile.fastmarket.repository.ProductDao
-import br.iesb.mobile.fastmarket.repository.ProductDatabase
+import br.iesb.mobile.fastmarket.database.Product
+import br.iesb.mobile.fastmarket.database.ProductDao
+import br.iesb.mobile.fastmarket.database.ProductDatabase
 import br.iesb.mobile.fastmarket.ui.adapter.RecyclerAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

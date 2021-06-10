@@ -60,5 +60,9 @@
         android:id="@+id/mapsFragment"
         android:name="br.iesb.mobile.fastmarket.ui.fragment.maps.MapsFragment"
         android:label="fragment_maps"
-        tools:layout="@layout/fragment_maps" />
+        tools:layout="@layout/fragment_maps" >
+        <action
+            android:id="@+id/acMapsToHome"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

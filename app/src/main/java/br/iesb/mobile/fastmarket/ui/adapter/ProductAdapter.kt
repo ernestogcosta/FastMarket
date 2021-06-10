@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.iesb.mobile.fastmarket.R
 import br.iesb.mobile.fastmarket.databinding.ItemProductBinding
-import br.iesb.mobile.fastmarket.repository.Product
+import br.iesb.mobile.fastmarket.database.Product
 
 class ProductAdapter(private val lista: List<Product>) : RecyclerView.Adapter<ProductViewHolder>()  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {

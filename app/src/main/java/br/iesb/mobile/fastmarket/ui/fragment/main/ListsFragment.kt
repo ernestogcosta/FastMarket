@@ -5,15 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import br.iesb.mobile.fastmarket.R
 import br.iesb.mobile.fastmarket.databinding.FragmentListsBinding
-import br.iesb.mobile.fastmarket.repository.ProductDao
-import br.iesb.mobile.fastmarket.repository.ProductDatabase
+import br.iesb.mobile.fastmarket.database.ProductDao
+import br.iesb.mobile.fastmarket.database.ProductDatabase
 import br.iesb.mobile.fastmarket.ui.adapter.ProductAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
