@@ -20,6 +20,9 @@
         <action
             android:id="@+id/nvHomeMarket"
             app:destination="@id/marketFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_chatbotFragment"
+            app:destination="@id/chatbotFragment" />
     </fragment>
     <fragment
         android:id="@+id/newListFragment"
@@ -48,4 +51,8 @@
         android:id="@+id/profileFragment"
         android:name="br.iesb.mobile.fastmarket.ui.fragment.main.ProfileFragment"
         android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/chatbotFragment"
+        android:name="br.iesb.mobile.fastmarket.ui.fragment.chatbot.ChatbotFragment"
+        android:label="ChatbotFragment" />
 </navigation>

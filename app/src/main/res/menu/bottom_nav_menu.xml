@@ -9,17 +9,14 @@
         android:title="Lists"
         android:icon="@drawable/ic_baseline_format_list_numbered_24"
         app:showAsAction="always"/>
-    <item android:id="@+id/marketFragment"
-        android:title="Mercados"
-        android:icon="@drawable/ic_baseline_map_24"
         app:showAsAction="always"/>
     <item android:id="@+id/profileFragment"
         android:title="Profile"
-        android:icon="@drawable/ic_baseline_chat_24"
+        android:icon="@drawable/ic_baseline_tag_faces_24"
         app:showAsAction="always"/>
-    <item android:id="@+id/newListFragment"
-        android:title="New List"
-        android:icon="@drawable/ic_baseline_power_settings_new_24"
+    <item android:id="@+id/chatbotFragment"
+        android:title="Chatbot"
+        android:icon="@drawable/ic_baseline_chat_24"
         app:showAsAction="always"/>
 
 </menu>
