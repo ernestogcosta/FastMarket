@@ -55,4 +55,9 @@
     <!-- Maps -->
     <string name="maps_header_products">Pegar o produto:</string>
     <string name="maps_button_next">Peguei! Próximo produto!</string>
+
+    <!-- Profile -->
+    <string name="profile_email">Atualmente, conectado à conta:</string>
+    <string name="profile_finish_session">Encerrar sessão?</string>
+    <string name="profile_sign_out">Logout</string>
 </resources>

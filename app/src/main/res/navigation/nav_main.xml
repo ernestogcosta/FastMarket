@@ -55,7 +55,11 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="br.iesb.mobile.fastmarket.ui.fragment.main.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/acProfileToLoginActivity"
+            app:destination="@id/loginActivity" />
+    </fragment>
     <fragment
         android:id="@+id/mapsFragment"
         android:name="br.iesb.mobile.fastmarket.ui.fragment.maps.MapsFragment"
@@ -65,4 +69,9 @@
             android:id="@+id/acMapsToHome"
             app:destination="@id/homeFragment" />
     </fragment>
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="br.iesb.mobile.fastmarket.ui.activity.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
 </navigation>

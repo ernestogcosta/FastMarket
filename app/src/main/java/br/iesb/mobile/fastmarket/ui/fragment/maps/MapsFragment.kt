@@ -61,9 +61,6 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        simularListaDeProdutosDoMercado()
-
-
         database = Room.databaseBuilder(
             requireActivity().applicationContext,
             ProductDatabase::class.java, "arquivo-de-produtos"
@@ -76,8 +73,13 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                 withContext(Dispatchers.Main){
                     for(i in 0..list.size-1){
                         productList.add(list[i].name.toString())
-                        binding.tvProduct.setText(productList[0])
                     }
+
+                    simularListaDeProdutosDoMercado()
+                    prepararListaDoUsuario()
+                    binding.tvProduct.setText(productListWithCorridor[0].productName)
+                    map.addMarker(MarkerOptions().position(marketCorridorsLatLng[productListWithCorridor[0].productCorridor]))
+                    productListWithCorridor.removeAt(0)
                 }
             }
         }
@@ -114,47 +116,38 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             findNavController().navigate(R.id.acMapsToHome)
         }else{
             val nome = productListWithCorridor[0].productName
-            productListWithCorridor.removeAt(0)
 
             binding.tvProduct.setText(nome)
 
-//            for(product in marketProductList){
-//                if(nome.equals(product.productName)){
-//                    map.addMarker(MarkerOptions().position(marketCorridorsLatLng[product.productCorridor - 1]))
-//                    break
-//                }
-//            }
-            map.addMarker(MarkerOptions().position(marketCorridorsLatLng[productListWithCorridor[0].productCorridor - 1]))
-
+            map.addMarker(MarkerOptions().position(marketCorridorsLatLng[productListWithCorridor[0].productCorridor]))
+            productListWithCorridor.removeAt(0)
         }
+    }
 
-
-
-
+    fun prepararListaDoUsuario(){
+        Log.d(TAG, "fora")
+        for(i in 0..productList.size-1){
+            Log.d(TAG, "dentro primeiro for")
+            for(j in 0..marketProductList.size-1){
+                Log.d(TAG, "dentro segundo for")
+                if(productList[i].equals(marketProductList[j].productName)){
+                    Log.d(TAG, "dentro if")
+                    productListWithCorridor.add(marketProductList[j])
+                    break
+                }
+            }
+        }
+        Log.d(TAG, "depois dos for")
+        productListWithCorridor.sortBy { it.productCorridor }
     }
 
     fun simularListaDeProdutosDoMercado(){
+        Log.d(TAG, "dentro do simular")
         marketProductList.add(ProductCorridor("Queijo", 1))
         marketProductList.add(ProductCorridor("Feijão", 2))
         marketProductList.add(ProductCorridor("Alface", 1))
         marketProductList.add(ProductCorridor("Café", 0))
         marketProductList.add(ProductCorridor("Salgadinho", 3))
-
-        Log.d(TAG, "antes do for")
-
-        for (name in productList){
-            Log.d(TAG, "dentro do for name")
-            for(product in marketProductList){
-                Log.d(TAG, "logo antes do if")
-                if(name.equals(product.productName)){
-                    productListWithCorridor.add(product)
-                    Log.d(TAG, "adicionou no productListWithCorridor")
-                    break
-                }
-            }
-        }
-        productListWithCorridor.sortBy { it.productCorridor }
-
 
         marketCorridorsLatLng.add(0, LatLng(-15.8421284583915, -48.02307878280237))
         marketCorridorsLatLng.add(1, LatLng(-15.842079432076709, -48.02309219384755))
