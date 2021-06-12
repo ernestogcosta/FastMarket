@@ -53,11 +53,12 @@
 
     <!-- List -->
     <string name="list_bt_ir_mercado">Ir para as compras!</string>
-    <string name="list_start_new_list">Criar outra lista!</string>
+    <string name="list_start_new_list">Criar uma nova lista!</string>
 
     <!-- Maps -->
     <string name="maps_header_products">Pegar o produto:</string>
     <string name="maps_button_next">Peguei! Próximo produto!</string>
+    <string name="maps_terminei">Terminei! Ir para o caixa!</string>
 
     <!-- Profile -->
     <string name="profile_email">Atualmente, conectado à conta:</string>

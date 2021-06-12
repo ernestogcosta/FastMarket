@@ -108,6 +108,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             Toast.makeText(view?.context, "Compras terminadas, ir para o caixa!", Toast.LENGTH_LONG).show()
             findNavController().navigate(R.id.acMapsToHome)
         }else{
+            if(productListWithCorridor.size == 1){
+                binding.btNextProduct.setText(R.string.maps_terminei)
+            }
             val nome = productListWithCorridor[0].productName
 
             binding.tvProduct.setText(nome)
