@@ -40,6 +40,8 @@
     <string name="main_listas">Listas</string>
     <string name="main_iniciar_compras">Ir às compras!</string>
     <string name="main_preco">Coming soon...</string>
+    <string name="home_chatbot">Alguma dúvida? Pergunte para nosso bot!</string>
+    <string name="home_ir_chatbot">Tirar dúvidas!</string>
 
     <!-- New List -->
     <string name="newlist_bt_add">Adicionar Produto</string>
@@ -47,8 +49,19 @@
     <string name="newlist_product_no_name">Por favor, digite o produto.</string>
     <string name="newlist_salvar_lista">Salvar Lista</string>
     <string name="newlist_saved">Lista criada com sucesso!</string>
+    <string name="newlist_product_not_found">Produto não encontrado! Verifique o nome do produto!</string>
 
     <!-- List -->
     <string name="list_bt_ir_mercado">Ir para as compras!</string>
-    <string name="list_start_new_list">Criar outra lista!</string>
+    <string name="list_start_new_list">Criar uma nova lista!</string>
+
+    <!-- Maps -->
+    <string name="maps_header_products">Pegar o produto:</string>
+    <string name="maps_button_next">Peguei! Próximo produto!</string>
+    <string name="maps_terminei">Terminei! Ir para o caixa!</string>
+
+    <!-- Profile -->
+    <string name="profile_email">Atualmente, conectado à conta:</string>
+    <string name="profile_finish_session">Encerrar sessão?</string>
+    <string name="profile_sign_out">Logout</string>
 </resources>

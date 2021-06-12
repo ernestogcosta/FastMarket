@@ -1,48 +1,59 @@
-package br.iesb.mobile.fastmarket.ui.fragment.main
+package br.iesb.mobile.fastmarket.ui.fragment.maps
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import br.iesb.mobile.fastmarket.R
-import br.iesb.mobile.fastmarket.databinding.FragmentNewListBinding
-import br.iesb.mobile.fastmarket.database.Product
 import br.iesb.mobile.fastmarket.database.ProductCorridor
 import br.iesb.mobile.fastmarket.database.ProductDao
 import br.iesb.mobile.fastmarket.database.ProductDatabase
-import br.iesb.mobile.fastmarket.ui.adapter.RecyclerAdapter
+import br.iesb.mobile.fastmarket.databinding.FragmentMapsBinding
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
+import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.fragment_maps.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class NewListFragment : Fragment() {
+class MapsFragment : Fragment(), OnMapReadyCallback {
+    private val TAG = "Compras"
 
-    private lateinit var binding: FragmentNewListBinding
+    private lateinit var binding: FragmentMapsBinding
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var recyclerAdapter: RecyclerAdapter
-
-    private lateinit var database: ProductDatabase
-    private lateinit var dao: ProductDao
+    private lateinit var map: GoogleMap
 
     private var productList = mutableListOf<String>()
+    private var productListWithCorridor = mutableListOf<ProductCorridor>()
     private var marketProductList = mutableListOf<ProductCorridor>()
+    private var marketCorridorsLatLng = mutableListOf<LatLng>()
+
+    private val searchText = MutableLiveData<String>("")
+    private lateinit var database: ProductDatabase
+    private lateinit var dao: ProductDao
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentNewListBinding.inflate(inflater, container, false)
+        binding = FragmentMapsBinding.inflate(inflater, container, false)
         binding.fragment = this
         binding.lifecycleOwner = this
+
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
 
         return binding.root
     }
@@ -50,91 +61,79 @@ class NewListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initMarketProdcutList()
-
         database = Room.databaseBuilder(
             requireActivity().applicationContext,
             ProductDatabase::class.java, "arquivo-de-produtos"
         ).build()
         dao = database.getProductDao()
 
-        binding.rvList.apply{
-            binding.rvList.layoutManager = LinearLayoutManager(activity?.applicationContext)
-            recyclerView = requireView().findViewById(R.id.rvList)
-            recyclerAdapter = RecyclerAdapter(productList)
-            recyclerView.adapter = recyclerAdapter
-            val itemTouchHelper = ItemTouchHelper(simpleCallback)
-            itemTouchHelper.attachToRecyclerView(recyclerView)
+        GlobalScope.launch {
+            searchText.value?.let {
+                val list = dao.getProduct(it)
+                withContext(Dispatchers.Main){
+                    for(i in 0..list.size-1){
+                        productList.add(list[i].name.toString())
+                    }
+
+                    simularListaDeProdutosDoMercado()
+                    prepararListaDoUsuario()
+                    binding.tvProduct.setText(productListWithCorridor[0].productName)
+                    map.addMarker(MarkerOptions().position(marketCorridorsLatLng[productListWithCorridor[0].productCorridor]))
+                    productListWithCorridor.removeAt(0)
+                }
+            }
         }
-
-
     }
 
-    fun addProduct(v: View){
-        var achou: Boolean = false
-        if(binding.etCharacter.text.toString().isEmpty()){
-            Toast.makeText(view?.context, getString(R.string.newlist_product_no_name), Toast.LENGTH_LONG).show()
-        }else{
-            val product = binding.etCharacter.text.toString().lowercase()
-            for(item in marketProductList){
-                val aux = item.productName.lowercase()
-                if(product.equals(aux)){
-                    val index: Int = productList.size
-                    productList.add(index, binding.etCharacter.text.toString())
+    override fun onMapReady(googleMap: GoogleMap) {
+        map = googleMap
+        val posicaoPDA = LatLng(-15.842045579792819, -48.023104311790156)
+        
+        map.uiSettings.setAllGesturesEnabled(false)
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(posicaoPDA, 20f))
 
-                    recyclerAdapter.notifyItemInserted(index)
-                    binding.etCharacter.setText("")
-                    achou = true
+        val point1 = LatLng(-15.841767343822005, -48.02317630677175)
+        val point2 = LatLng(-15.842374916741292, -48.02311251273033)
+        val latLngBounds = LatLngBounds.Builder()
+            .include(point1)
+            .include(point2)
+            .build()
+
+        map.setLatLngBoundsForCameraTarget(latLngBounds)
+    }
+
+    fun getNextProduct(v: View){
+        map.clear()
+        if(productListWithCorridor.isNullOrEmpty()){
+            Toast.makeText(view?.context, "Compras terminadas, ir para o caixa!", Toast.LENGTH_LONG).show()
+            findNavController().navigate(R.id.acMapsToHome)
+        }else{
+            if(productListWithCorridor.size == 1){
+                binding.btNextProduct.setText(R.string.maps_terminei)
+            }
+            val nome = productListWithCorridor[0].productName
+
+            binding.tvProduct.setText(nome)
+
+            map.addMarker(MarkerOptions().position(marketCorridorsLatLng[productListWithCorridor[0].productCorridor]))
+            productListWithCorridor.removeAt(0)
+        }
+    }
+
+    fun prepararListaDoUsuario(){
+        for(i in 0..productList.size-1){
+            for(j in 0..marketProductList.size-1){
+                if(productList[i].lowercase().equals(marketProductList[j].productName.lowercase())){
+                    productListWithCorridor.add(marketProductList[j])
                     break
                 }
             }
-            if(!achou){
-                Toast.makeText(view?.context, R.string.newlist_product_not_found, Toast.LENGTH_LONG).show()
-            }
         }
+        Log.d(TAG, "depois dos for")
+        productListWithCorridor.sortBy { it.productCorridor }
     }
 
-//    fun saveNewList(v: View){
-//        Toast.makeText(view?.context, "Salvando no banco", Toast.LENGTH_LONG).show()
-//    }
-
-    fun saveNewList(v: View) {
-        GlobalScope.launch {
-            dao.deleteAll()
-            for(product in productList){
-               val p = Product(name = product)
-               dao.insertProduct(p)
-            }
-            withContext(Dispatchers.Main) {
-                Toast.makeText(view?.context, getString(R.string.newlist_saved), Toast.LENGTH_LONG).show()
-                findNavController().navigate(R.id.acNewListToList)
-            }
-        }
-    }
-
-    private var simpleCallback = object: ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT){
-        override fun onMove(
-            recyclerView: RecyclerView,
-            viewHolder: RecyclerView.ViewHolder,
-            target: RecyclerView.ViewHolder
-        ): Boolean {
-            return true
-        }
-
-        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            var position = viewHolder.adapterPosition
-
-            when(direction){
-                ItemTouchHelper.LEFT -> {
-                    productList.removeAt(position)
-                    recyclerAdapter.notifyItemRemoved(position)
-                }
-            }
-        }
-
-    }
-
-    private fun initMarketProdcutList(){
+    fun simularListaDeProdutosDoMercado(){
         marketProductList.add(ProductCorridor("Frutas", 0))
         marketProductList.add(ProductCorridor("Maçã", 0))
         marketProductList.add(ProductCorridor("Laranja", 0))
@@ -254,7 +253,17 @@ class NewListFragment : Fragment() {
         marketProductList.add(ProductCorridor("Salsicha", 9))
         marketProductList.add(ProductCorridor("Bacon", 9))
         marketProductList.add(ProductCorridor("Linguiça", 9))
-    }
 
+        marketCorridorsLatLng.add(0, LatLng(-15.842173614197218, -48.02303854966681))
+        marketCorridorsLatLng.add(1, LatLng(-15.842115556730867, -48.02306939507074))
+        marketCorridorsLatLng.add(2, LatLng(-15.842072981244915, -48.02308548832496))
+        marketCorridorsLatLng.add(3, LatLng(-15.842076851744016, -48.02308817053399))
+        marketCorridorsLatLng.add(4, LatLng(-15.842061369747194, -48.02311499262437))
+        marketCorridorsLatLng.add(5, LatLng(-15.84202266474996, -48.02311901593793))
+        marketCorridorsLatLng.add(6, LatLng(-15.841992990913715, -48.023129744774074))
+        marketCorridorsLatLng.add(7, LatLng(-15.84197105807544, -48.02314047361022))
+        marketCorridorsLatLng.add(8, LatLng(-15.841927192391733, -48.023167295700596))
+        marketCorridorsLatLng.add(9, LatLng(-15.841885907033642, -48.02318070674578))
+    }
 
 }

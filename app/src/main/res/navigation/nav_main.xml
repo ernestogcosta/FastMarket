@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
     app:startDestination="@id/homeFragment">
 
@@ -42,17 +43,42 @@
         <action
             android:id="@+id/acListToMarket"
             app:destination="@id/marketFragment" />
+        <action
+            android:id="@+id/acListsToMaps"
+            app:destination="@id/mapsFragment" />
     </fragment>
     <fragment
         android:id="@+id/marketFragment"
         android:name="br.iesb.mobile.fastmarket.ui.fragment.main.MarketFragment"
-        android:label="MarketFragment" />
+        android:label="MarketFragment" >
+        <action
+            android:id="@+id/acMarketToMaps"
+            app:destination="@id/mapsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="br.iesb.mobile.fastmarket.ui.fragment.main.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment">
+        <action
+            android:id="@+id/acProfileToLoginActivity"
+            app:destination="@id/loginActivity" />
+    </fragment>
     <fragment
         android:id="@+id/chatbotFragment"
         android:name="br.iesb.mobile.fastmarket.ui.fragment.chatbot.ChatbotFragment"
         android:label="ChatbotFragment" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="br.iesb.mobile.fastmarket.ui.fragment.maps.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" >
+        <action
+            android:id="@+id/acMapsToHome"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="br.iesb.mobile.fastmarket.ui.activity.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
 </navigation>

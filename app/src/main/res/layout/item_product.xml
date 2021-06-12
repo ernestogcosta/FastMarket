@@ -6,7 +6,7 @@
     <data>
         <variable
             name="product"
-            type="br.iesb.mobile.fastmarket.repository.Product" />
+            type="br.iesb.mobile.fastmarket.database.Product" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
