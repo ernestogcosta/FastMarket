@@ -150,6 +150,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         marketProductList.add(ProductCorridor("Tomate", 0))
         marketProductList.add(ProductCorridor("Cebola", 0))
         marketProductList.add(ProductCorridor("Batata", 0))
+        marketProductList.add(ProductCorridor("Alface", 0))
         marketProductList.add(ProductCorridor("Pão", 0))
         marketProductList.add(ProductCorridor("Bolo", 0))
         marketProductList.add(ProductCorridor("Biscoito de polvilho", 0))
