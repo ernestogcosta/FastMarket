@@ -65,7 +65,6 @@ class ListsFragment : Fragment() {
 
     fun startNewList(v: View){
         GlobalScope.launch {
-            dao.deleteAll()
             withContext(Dispatchers.Main) {
                 findNavController().navigate(R.id.acListToNewList)
             }

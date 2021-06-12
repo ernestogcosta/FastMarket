@@ -118,13 +118,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     }
 
     fun prepararListaDoUsuario(){
-        Log.d(TAG, "fora")
         for(i in 0..productList.size-1){
-            Log.d(TAG, "dentro primeiro for")
             for(j in 0..marketProductList.size-1){
-                Log.d(TAG, "dentro segundo for")
-                if(productList[i].equals(marketProductList[j].productName)){
-                    Log.d(TAG, "dentro if")
+                if(productList[i].lowercase().equals(marketProductList[j].productName.lowercase())){
                     productListWithCorridor.add(marketProductList[j])
                     break
                 }
@@ -254,16 +250,16 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         marketProductList.add(ProductCorridor("Bacon", 9))
         marketProductList.add(ProductCorridor("Linguiça", 9))
 
-        marketCorridorsLatLng.add(0, LatLng(-15.8421284583915, -48.02307878280237))
-        marketCorridorsLatLng.add(1, LatLng(-15.842079432076709, -48.02309219384755))
-        marketCorridorsLatLng.add(2, LatLng(-15.842026535250016, -48.02311633372889))
-        marketCorridorsLatLng.add(3, LatLng(-15.84196976790841, -48.02313510919214))
-        marketCorridorsLatLng.add(4, LatLng(-15.84196976790841, -48.02313510919214))
-        marketCorridorsLatLng.add(5, LatLng(-15.84196976790841, -48.02313510919214))
-        marketCorridorsLatLng.add(6, LatLng(-15.84196976790841, -48.02313510919214))
-        marketCorridorsLatLng.add(7, LatLng(-15.84196976790841, -48.02313510919214))
-        marketCorridorsLatLng.add(8, LatLng(-15.84196976790841, -48.02313510919214))
-        marketCorridorsLatLng.add(9, LatLng(-15.84196976790841, -48.02313510919214))
+        marketCorridorsLatLng.add(0, LatLng(-15.842173614197218, -48.02303854966681))
+        marketCorridorsLatLng.add(1, LatLng(-15.842115556730867, -48.02306939507074))
+        marketCorridorsLatLng.add(2, LatLng(-15.842072981244915, -48.02308548832496))
+        marketCorridorsLatLng.add(3, LatLng(-15.842076851744016, -48.02308817053399))
+        marketCorridorsLatLng.add(4, LatLng(-15.842061369747194, -48.02311499262437))
+        marketCorridorsLatLng.add(5, LatLng(-15.84202266474996, -48.02311901593793))
+        marketCorridorsLatLng.add(6, LatLng(-15.841992990913715, -48.023129744774074))
+        marketCorridorsLatLng.add(7, LatLng(-15.84197105807544, -48.02314047361022))
+        marketCorridorsLatLng.add(8, LatLng(-15.841927192391733, -48.023167295700596))
+        marketCorridorsLatLng.add(9, LatLng(-15.841885907033642, -48.02318070674578))
     }
 
 }
