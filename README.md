@@ -1,12 +1,11 @@
-# Artigo com seções 1 à 4 na pasta raiz
 # TRABALHO DE PROJETO INTEGRADOR 2
+## Artigo completo na pasta raiz
 ## Lista de Mercado para Compras Rápidas
 
-O intuito deste projeto é a criação de um aplicativo para listas de compras em mercados, onde isso possa acelerar o ato de ir fisicamente ao mercado fazer compras.
+Projeto onde se desenvolveu um aplicativo de lista de compras de mercado que possui como objetivo diminuir o tempo dentro do mercado dando as localizações dos produtos.
 
 ### Alunos:
-Ernesto, Adolfo, André e Jéssica
+Ernesto, André 
 
-
-## Link para o repositório do servidor usado na comunicação com o DialogFlow:
-https://github.com/Henrix-Andre/FastMarket-Server
+## Servidor rodando no Heroku para comunicação com DialogFlow:
+https://github.com/Henrix-Andre/dialogflow-server
