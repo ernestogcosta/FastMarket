@@ -43,7 +43,7 @@ class SignUpFragment : Fragment() {
             auth.signInWithEmailAndPassword(binding.etEmailSignup.text.toString(), binding.etPassword.text.toString()).addOnCompleteListener{
                 if(it.isSuccessful){
                     Toast.makeText(context, getString(R.string.login_success), Toast.LENGTH_LONG).show()
-                    findNavController().navigate(R.id.acLoginToMainActivity)
+                    findNavController().navigate(R.id.acSignUpToMainActivity)
                 }else{
                     Toast.makeText(context, getString(R.string.login_email_senha_errado), Toast.LENGTH_LONG).show()
                 }
