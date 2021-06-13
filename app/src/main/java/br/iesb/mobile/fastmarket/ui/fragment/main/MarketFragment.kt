@@ -39,15 +39,9 @@ class MarketFragment : Fragment(), OnMapReadyCallback {
         val posicaoPDA = LatLng(-15.842045579792819, -48.023104311790156)
         val pinoPDA = MarkerOptions().position(posicaoPDA).title("Pão de Açúcar Águas Claras")
         map.addMarker(pinoPDA)
-        //Oba
         map.addMarker(MarkerOptions().position(LatLng(-15.840350003557049, -48.021917303570966)).title("Oba Horti-Frutti"))
-
-        //Bellavia
         map.addMarker(MarkerOptions().position(LatLng(-15.838378644766504, -48.01933093373992)).title("Bellavia"))
-
-        //Dona de Casa
         map.addMarker(MarkerOptions().position(LatLng(-15.835828130037385, -48.01273785023568)).title("Dona de Casa"))
-
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(posicaoPDA, 15f))
     }
 

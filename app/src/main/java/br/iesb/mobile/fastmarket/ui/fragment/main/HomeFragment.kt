@@ -24,16 +24,16 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    fun navNewList(v: View){
-        findNavController().navigate(R.id.nvHomeNewList)
-    }
-
     fun navLists(v: View){
         findNavController().navigate(R.id.nvHomeLists)
     }
 
     fun navMarket(v: View){
         findNavController().navigate(R.id.nvHomeMarket)
+    }
+
+    fun navChatbot(v: View){
+        findNavController().navigate(R.id.acHomeToChatbot)
     }
 
 }

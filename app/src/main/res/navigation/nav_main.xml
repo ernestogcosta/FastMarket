@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_homeFragment_to_chatbotFragment"
             app:destination="@id/chatbotFragment" />
+        <action
+            android:id="@+id/acHomeToChatbot"
+            app:destination="@id/chatbotFragment" />
     </fragment>
     <fragment
         android:id="@+id/newListFragment"

@@ -1,5 +1,6 @@
 package br.iesb.mobile.fastmarket.ui.fragment.maps
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -22,6 +23,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolygonOptions
 import kotlinx.android.synthetic.main.fragment_maps.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -77,6 +79,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
                     simularListaDeProdutosDoMercado()
                     prepararListaDoUsuario()
+                    prepararPrateleiras()
                     binding.tvProduct.setText(productListWithCorridor[0].productName)
                     map.addMarker(MarkerOptions().position(marketCorridorsLatLng[productListWithCorridor[0].productCorridor]))
                     productListWithCorridor.removeAt(0)
@@ -92,8 +95,10 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         map.uiSettings.setAllGesturesEnabled(false)
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(posicaoPDA, 20f))
 
-        val point1 = LatLng(-15.841767343822005, -48.02317630677175)
-        val point2 = LatLng(-15.842374916741292, -48.02311251273033)
+//        val point1 = LatLng(-15.841767343822005, -48.02317630677175)
+//        val point2 = LatLng(-15.842374916741292, -48.02311251273033)
+        val point1 = LatLng(-15.842247790704835, -48.023142121946584)
+        val point2 = LatLng(-15.841744625622212, -48.023207165515494)
         val latLngBounds = LatLngBounds.Builder()
             .include(point1)
             .include(point2)
@@ -104,6 +109,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
     fun getNextProduct(v: View){
         map.clear()
+        prepararPrateleiras()
         if(productListWithCorridor.isNullOrEmpty()){
             Toast.makeText(view?.context, "Compras terminadas, ir para o caixa!", Toast.LENGTH_LONG).show()
             findNavController().navigate(R.id.acMapsToHome)
@@ -254,16 +260,134 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         marketProductList.add(ProductCorridor("Bacon", 9))
         marketProductList.add(ProductCorridor("Linguiça", 9))
 
-        marketCorridorsLatLng.add(0, LatLng(-15.842173614197218, -48.02303854966681))
-        marketCorridorsLatLng.add(1, LatLng(-15.842115556730867, -48.02306939507074))
-        marketCorridorsLatLng.add(2, LatLng(-15.842072981244915, -48.02308548832496))
-        marketCorridorsLatLng.add(3, LatLng(-15.842076851744016, -48.02308817053399))
-        marketCorridorsLatLng.add(4, LatLng(-15.842061369747194, -48.02311499262437))
-        marketCorridorsLatLng.add(5, LatLng(-15.84202266474996, -48.02311901593793))
-        marketCorridorsLatLng.add(6, LatLng(-15.841992990913715, -48.023129744774074))
-        marketCorridorsLatLng.add(7, LatLng(-15.84197105807544, -48.02314047361022))
-        marketCorridorsLatLng.add(8, LatLng(-15.841927192391733, -48.023167295700596))
-        marketCorridorsLatLng.add(9, LatLng(-15.841885907033642, -48.02318070674578))
+        marketCorridorsLatLng.add(0, LatLng(-15.84223811446553, -48.02310524157201))
+        marketCorridorsLatLng.add(1, LatLng(-15.842180702100563, -48.0231334047669))
+        marketCorridorsLatLng.add(2, LatLng(-15.842150383204613, -48.02315218023016))
+        marketCorridorsLatLng.add(3, LatLng(-15.842114903639738, -48.02317095569342))
+        marketCorridorsLatLng.add(4, LatLng(-15.842079424068631, -48.023189060604416))
+        marketCorridorsLatLng.add(5, LatLng(-15.842044589572422, -48.02320850661954))
+        marketCorridorsLatLng.add(6, LatLng(-15.842006529654526, -48.02323063484385))
+        marketCorridorsLatLng.add(7, LatLng(-15.841965889396207, -48.02325008085936))
+        marketCorridorsLatLng.add(8, LatLng(-15.841929119631617, -48.02326818577037))
+        marketCorridorsLatLng.add(9, LatLng(-15.841870417011096, -48.0232923256517))
     }
+
+    fun prepararPrateleiras(){
+//        map.addMarker(MarkerOptions().position(LatLng(-15.841870417011096, -48.0232923256517)))
+//        map.addMarker(MarkerOptions().position(LatLng(-15.841929119631617, -48.02326818577037)))
+
+        val polygon1 = map.addPolygon(
+            PolygonOptions()
+                .add(
+                    LatLng(-15.842223277565205, -48.023162238514516),
+                    LatLng(-15.842208440662375, -48.02317296735067),
+                    LatLng(-15.84213941679573, -48.02300264707681),
+                    LatLng(-15.84215167337191, -48.02299460044969)
+                )
+                .strokeColor(Color.BLACK)
+                .fillColor(Color.BLACK)
+        )
+        val polygon2 = map.addPolygon(
+            PolygonOptions()
+                .add(
+                    LatLng(-15.842188443095955, -48.02318168453004),
+                    LatLng(-15.842168445527575, -48.02319040170941),
+                    LatLng(-15.84210135689655, -48.02301672867425),
+                    LatLng(-15.842121354471594, -48.0230093525994)
+                )
+                .strokeColor(Color.BLACK)
+                .fillColor(Color.BLACK)
+        )
+        val polygon3 = map.addPolygon(
+            PolygonOptions()
+                .add(
+                    LatLng(-15.842149738123085, -48.023199118888776),
+                    LatLng(-15.842137481546802, -48.02320649496363),
+                    LatLng(-15.84206652240628, -48.02303215137621),
+                    LatLng(-15.842082649485851, -48.0230274575104)
+                )
+                .strokeColor(Color.BLACK)
+                .fillColor(Color.BLACK)
+        )
+        val polygon4 = map.addPolygon(
+            PolygonOptions()
+                .add(
+                    LatLng(-15.842116838890307, -48.02321521214301),
+                    LatLng(-15.842100711813446, -48.0232185649043),
+                    LatLng(-15.84202910757669, -48.023052267943996),
+                    LatLng(-15.842048460075619, -48.023041539107844)
+                )
+                .strokeColor(Color.BLACK)
+                .fillColor(Color.BLACK)
+        )
+        val polygon5 = map.addPolygon(
+            PolygonOptions()
+                .add(
+                    LatLng(-15.842083294565544, -48.02323264650082),
+                    LatLng(-15.842066522402806, -48.02324002257568),
+                    LatLng(-15.841996208320797, -48.023068361197296),
+                    LatLng(-15.842012980489374, -48.02305964401792)
+                )
+                .strokeColor(Color.BLACK)
+                .fillColor(Color.BLACK)
+        )
+        val polygon6 = map.addPolygon(
+            PolygonOptions()
+                .add(
+                    LatLng(-15.842046524821399, -48.023252092516145),
+                    LatLng(-15.842030397738942, -48.02325745693422),
+                    LatLng(-15.841960728727884, -48.023093842182945),
+                    LatLng(-15.841974275481912, -48.02307909003324)
+                )
+                .strokeColor(Color.BLACK)
+                .fillColor(Color.BLACK)
+        )
+        val polygon7 = map.addPolygon(
+            PolygonOptions()
+                .add(
+                    LatLng(-15.842008464904714, -48.0232675152181),
+                    LatLng(-15.841988467318497, -48.02327757350199),
+                    LatLng(-15.841915572874546, -48.0231045710191),
+                    LatLng(-15.841936860635238, -48.02309585383973)
+                )
+                .strokeColor(Color.BLACK)
+                .fillColor(Color.BLACK)
+        )
+        val polygon8 = map.addPolygon(
+            PolygonOptions()
+                .add(
+                    LatLng(-15.841968469730295, -48.023284949576855),
+                    LatLng(-15.841950407390858, -48.02329433730848),
+                    LatLng(-15.841879448184612, -48.02312401703462),
+                    LatLng(-15.841896865446635, -48.02311664095976)
+                )
+                .strokeColor(Color.BLACK)
+                .fillColor(Color.BLACK)
+        )
+        val polygon9 = map.addPolygon(
+            PolygonOptions()
+                .add(
+                    LatLng(-15.841926539296992, -48.02330573669689),
+                    LatLng(-15.841909122037526, -48.02331445387625),
+                    LatLng(-15.841840098068566, -48.02314547470692),
+                    LatLng(-15.841857515333986, -48.02313608697529)
+                )
+                .strokeColor(Color.BLACK)
+                .fillColor(Color.BLACK)
+        )
+        val polygon10 = map.addPolygon(
+            PolygonOptions()
+                .add(
+                    LatLng(-15.841884608853201, -48.02337212137128),
+                    LatLng(-15.841854934996677, -48.02338352075969),
+                    LatLng(-15.841811714371758, -48.02328293792079),
+                    LatLng(-15.841827841471686, -48.02326550356205)
+                )
+                .strokeColor(Color.GRAY)
+                .fillColor(Color.GRAY)
+        )
+    }
+
+
 
 }
