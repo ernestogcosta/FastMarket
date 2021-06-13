@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="fragment"
+            type="br.iesb.mobile.fastmarket.ui.fragment.main.ListsFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#BF0A33FF"
+        tools:context=".ui.activity.MainActivity">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSavedList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/btStartNewList"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btGoMarket"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.PrimaryButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:text="@string/list_bt_ir_mercado"
+            android:onClick="@{fragment::startShopping}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btStartNewList"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.PrimaryButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/list_start_new_list"
+            android:onClick="@{fragment::startNewList}"
+            app:layout_constraintBottom_toTopOf="@+id/btGoMarket"
+            app:layout_constraintEnd_toEndOf="@+id/btGoMarket"
+            app:layout_constraintStart_toStartOf="@+id/btGoMarket" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

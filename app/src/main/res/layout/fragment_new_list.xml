@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="fragment"
+            type="br.iesb.mobile.fastmarket.ui.fragment.main.NewListFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#BF0A33FF"
+        tools:context=".ui.activity.MainActivity">
+
+        <EditText
+            android:id="@+id/etCharacter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:hint="@string/newlist_product_search"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/btSave"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btAdd" />
+
+        <Button
+            android:id="@+id/btAdd"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.PrimaryButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="@{fragment::addProduct}"
+            android:text="@string/newlist_bt_add"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/etCharacter"
+            app:layout_constraintStart_toStartOf="@+id/etCharacter"
+            app:layout_constraintTop_toBottomOf="@+id/etCharacter" />
+
+        <Button
+            android:id="@+id/btSave"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.PrimaryButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:onClick="@{fragment::saveNewList}"
+            android:text="@string/newlist_salvar_lista"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/etCharacter"
+            app:layout_constraintStart_toStartOf="@+id/etCharacter" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

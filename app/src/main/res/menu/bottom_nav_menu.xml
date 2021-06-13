@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/homeFragment"
+        android:title="Home"
+        android:icon="@drawable/ic_baseline_home_24"
+        app:showAsAction="always"/>
+    <item android:id="@+id/listsFragment"
+        android:title="Lists"
+        android:icon="@drawable/ic_baseline_format_list_numbered_24"
+        app:showAsAction="always"/>
+        app:showAsAction="always"/>
+    <item android:id="@+id/profileFragment"
+        android:title="Profile"
+        android:icon="@drawable/ic_baseline_tag_faces_24"
+        app:showAsAction="always"/>
+</menu>
